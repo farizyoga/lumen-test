@@ -35,8 +35,18 @@ class Authenticate
      */
     public function handle($request, Closure $next, $guard = null)
     {
+        if (!$request->bearerToken()){
+            return response()->json([
+                'status' => 'fail',
+                'data'=>['header'=>'header token is required']
+            ], 400);
+        }
+
         if ($this->auth->guard($guard)->guest()) {
-            return response('Unauthorized.', 401);
+            return response()->json([
+                'status' => 'fail',
+                'data'=>'Unauthorized.'
+            ], 401);
         }
 
         return $next($request);
