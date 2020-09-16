@@ -3,14 +3,14 @@
 ## Sebelum memulai 
 - Pastikan semua data yang akan di response dari API sudah memenuhi standard https://github.com/omniti-labs/jsend
 - Pastikan memiliki versi PHP 7.2 atau diatasnya dan mysql database di komputer/laptop masing masing
-- Clone repo ini
+- Fork repo ini
 - Buat database di mysql
 - Sambungkan aplikasi lumen ke database yang baru dibuat tadi
 - Jalankan perintah php artisan migrate
 - Jalankan perintah php artisan db:seed
 
 ## Setelah selesai
-- Buat pull request dengan format branch "test/NAMALENGKAP"
+- Push ke repo hasil forking
 
 ## Soal
 1. Pada endpoint "/users" API harus memberikan list dari table user tanpa attribute password, token, dan device<br><br><br>
