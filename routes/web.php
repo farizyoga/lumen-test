@@ -13,8 +13,18 @@
 |
 */
 
-$router->get('/users', 'UserController@index');
-$router->get('/users/{user}', 'UserController@view');
+$router->get('/', function () use ($router) {
+    return $router->app->version();
+    $res['success'] = true;
+    $res['result'] = "Hello there";
+    return response($res);
+});
+
+$router->group(['prefix' => 'api'], function () use ($router) {
+    $router->get('users', 'UserController@showAllUsers');
+
+    $router->get('users/{id}', ['uses' => 'UserController@showOneUser']);
+});
 
 $router->group(['middleware' => 'auth'], function($router) {
 	$router->get('/secure/my-profile', 'SecureController@profile');
